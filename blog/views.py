@@ -15,11 +15,12 @@ def profile_view(request):
 
 
 def post_view(request):
+    '''
     posts_list = Post.objects.all()
     posts_snippets = list(map(lambda x: x.text[:250], posts_list))
     posts_snippets = list(map(lambda x: x + " ...", posts_snippets))
 
-    '''
+
     paginator = Paginator(posts_list, 3)
     page = request.GET.get('page')
 
@@ -32,7 +33,7 @@ def post_view(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
     '''
-    return render(request, "blog/posts.html", {"posts":posts_list})
+    return render(request, "blog/posts.html", {})
 
 
 
