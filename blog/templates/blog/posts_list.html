@@ -1,7 +1,9 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
+   <p>hhh</p>
    {% for p in posts_list %}
+      <script>console.log(11)</script>
       <article class="post fade-in">
          <h1>{{p.title}}</h1>
          <h5>{{p.published_date}}</h5>
