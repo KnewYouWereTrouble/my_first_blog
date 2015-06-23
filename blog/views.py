@@ -21,7 +21,7 @@ def post_view(request):
 
     paginator = Paginator(posts_list, 3)
     page = request.GET.get('page')
-
+    '''
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -30,12 +30,12 @@ def post_view(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
-
-    return render(request, 'blog/posts.html', {"posts":posts})
+    '''
+    return render(request, "blog/posts.html", {"posts":posts_list})
 
 
 
 
 def post_details_view(request, pk):
     post = get_object_or_404(Post, title=pk)
-    return render(request, 'blog/post_details.html', {'p': post})
+    return render(request, "blog/post_details.html", {"p": post})
