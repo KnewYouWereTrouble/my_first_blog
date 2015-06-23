@@ -76,10 +76,6 @@ section, summary, time, mark, audio, video {
 	margin-bottom : 3em;
 }
 
-.post .snippet{
-	max-height: 3em;
-	overflow:hidden;
-}
 
 .post h1{
 	margin-bottom: 0.3em;
