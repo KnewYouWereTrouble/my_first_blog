@@ -2,10 +2,12 @@
 
 {% block content %}
    {% for post in posts %}
-      <div>
-           <p>published: {{ post.published_date }}</p>
-           <h1><a href="">{{ post.title }}</a></h1>
-           <p>{{ post.text|linebreaks }}</p>
-      </div>
+      <article class="post fade-in">
+         <h1>{{p.title}}</h1>
+         <h5>{{p.published_date}}</h5>
+         <p><pre>{{ p.text|linebreaks }}</pre></p>
+         <h5 class="written-by">Written by: <a href="{%url "blog.views.profile_view" %}">{{p.author}}</a></h5>
+
+      </article>
    {% endfor %}
 {% endblock %}
