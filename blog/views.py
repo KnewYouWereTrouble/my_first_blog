@@ -28,7 +28,7 @@ def post_view(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
     '''
-    return render(request, "blog/posts.html", {"posts":posts_list})
+    return render(request, "blog/posts.html", {"posts_list":posts_list})
 
 
 
