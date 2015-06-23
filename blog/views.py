@@ -11,7 +11,7 @@ def home_view(request):
     return render(request, "blog/home.html")
 
 def profile_view(request):
-
+    return render(request, "blog/profile.html")
 
 
 def post_view(request):
