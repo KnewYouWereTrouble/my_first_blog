@@ -1,14 +1,17 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-   {% for p in posts %}
-      <article class="post fade-in">
-         <h1> <a href="{% url "blog.views.post_details_view" pk=p.title%}">{{p.title}}</a></h1>
-         <h5>{{p.published_date}}</h5>
-         <p class="snippet">{{p.text}}</p><span>...</span>
-         <h5 class="written-by">Written by: <a href="{% url "blog.views.home_view" %}">{{p.author}}<h5>
-      </article>
-   {% endfor %}
-
    
+
+   <div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">Newer</a>
+        {% endif %}
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Older</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}
