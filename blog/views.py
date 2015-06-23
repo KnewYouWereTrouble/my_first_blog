@@ -15,7 +15,7 @@ def profile_view(request):
 
 
 def post_view(request):
-    posts = Post.objects.all()
+    postsss = Post.objects.all()
     '''
     paginator = Paginator(posts_list, 3)
     page = request.GET.get('page')
@@ -28,7 +28,7 @@ def post_view(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
     '''
-    return render(request, "blog/posts.html", {"posts":posts})
+    return render(request, "blog/posts.html", {"postsss":postsss})
 
 
 
