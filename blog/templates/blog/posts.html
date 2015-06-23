@@ -10,15 +10,5 @@
       </article>
    {% endfor %}
 
-   <div class="pagination">
-    <span class="step-links">
-        {% if posts.has_previous %}
-            <a href="?page={{ posts.previous_page_number }}">Newer</a>
-        {% endif %}
-
-        {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">Older</a>
-        {% endif %}
-    </span>
-</div>
+   
 {% endblock %}
