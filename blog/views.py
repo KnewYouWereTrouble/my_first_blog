@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Post
 
@@ -31,7 +31,7 @@ def post_view(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         posts = paginator.page(paginator.num_pages)
 
-    return render_to_response('posts_list.html', {"posts_list": posts_list})
+    return render_to_response('blog/posts_list.html', {"posts": posts})
 
 
 
