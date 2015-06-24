@@ -29,14 +29,17 @@ section, summary, time, mark, audio, video {
 
 /* HEADER */
 #header{
-   background-color: #1f1815;
+	background-image: url("../images/headerbg.jpg");
+	background-size:contain;
    position:fixed;
    width: 25%;
    height:100%;
    left:0;
    top:0;
    color: rgba(255, 255, 255, 0.5);
+
 }
+
 
 #header .header-content{
    position:relative;
@@ -45,15 +48,33 @@ section, summary, time, mark, audio, video {
 	max-width: 90%
 }
 
+#header .header-footer{
+	position: relative;
+	top:35%;
+	left:10%;
+}
 
-#header .navbar li{
-   margin-top:1em;
+#header .navbar li a{
+	margin-top:1em;
+	display: block;
+   text-decoration: none;
 }
 
 #header .profile-pic img{
 	height:50%;
 	width:50%;
 	margin-bottom: 2em;
+}
+
+#header .icon{
+	display: inline-block;
+	text-decoration: none;
+	margin-right: 0.2em;
+	color:#778899;
+}
+
+#header .icon:hover, #header .navbar li a:hover{
+	color:#49bf9d;
 }
 
 

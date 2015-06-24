@@ -7,6 +7,7 @@
       <title>Baa Baa Banana</title>
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
       <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="{% static "css/main.css" %}">
 
       <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -19,8 +20,7 @@
          <div class="header-content">
             <div class="profile-pic">
                <img src="{% static "images/happycat.jpg" %}" class="img-circle">
-            <div>
-
+            </div>
             <h4><strong>This blog belongs to Desmond.</strong><br/><br/>
                 <h5>Write code, do maths <br/>and appreciate good web design</h5><br/>
             </h4>
@@ -33,9 +33,18 @@
                   {%	if	user.is_authenticated %}
                   <li role="presentation"><a href="{% url "blog.views.post_view_new" %}"><span class="glyphicon glyphicon-plus"></span></a></li>
                   {% endif %}
+
                </ul>
             </nav>
+            <br/>
+            <ul class="">
+               <li class="icon"><a href="https://github.com/KnewYouWereTrouble/my_first_blog" class="icon fa fa-github fa-2x"></a></li>
+               <li class="icon"><a href="https://www.facebook.com/detchmund" class="icon fa fa-facebook-square fa-2x"></a></li>
+               <li class="icon"><a href="https://instagram.com/desmondnation/" class="icon fa fa-instagram fa-2x"></a></li>
+            </ul>
          </div>
+
+         <h6 class="header-footer">Design : <a href="http://www.html5up.net">HTML5Up</a></h6>
       </header>
 
       <section id="main-content">
