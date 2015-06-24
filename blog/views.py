@@ -16,10 +16,11 @@ def profile_view(request):
 
 def post_view(request):
     posts = Post.objects.all()
-    posts_snippets = list(map(lambda x: x.text[:250], posts_list))
+    posts_snippets = list(map(lambda x: x.text[:250], posts))
     posts_snippets = list(map(lambda x: x + " ...", posts_snippets))
+
     '''
-    paginator = Paginator(posts_list, 3)
+    paginator = Paginator(posts, 3)
     page = request.GET.get('page')
 
     try:
