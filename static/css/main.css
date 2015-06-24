@@ -64,6 +64,7 @@ section, summary, time, mark, audio, video {
 	height:50%;
 	width:50%;
 	margin-bottom: 2em;
+	border: 0.3em white solid;
 }
 
 #header .icon{
