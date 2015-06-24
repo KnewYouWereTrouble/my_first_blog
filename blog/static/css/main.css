@@ -89,6 +89,10 @@ section, summary, time, mark, audio, video {
 	background-color: white;
 }
 
+.post p{
+	word-break: keep-all;
+}
+
 .post .written-by{
 	margin-top:3em;
 }
