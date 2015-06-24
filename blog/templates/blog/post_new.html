@@ -1,0 +1,18 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+   <article class="post fade-in">
+      <h1>New post</h1><br/>
+      <form method="POST" class="post-form">{% csrf_token %}
+         <label>Title: </label>{{form.title}}
+         <label>Message: </label>{{form.text}}
+         <button type="submit" class="save btn btn-default">Save</button>
+      </form>
+   </article>
+
+
+
+
+
+{% endblock %}

@@ -4,9 +4,14 @@
 
    <article class="post fade-in">
       <h1>{{p.title}}</h1>
+
       <h5>{{p.published_date}}</h5>
       <p>{{ p.text|linebreaks }}</p>
-      <h5 class="written-by">Written by: <a href="{%url "blog.views.profile_view" %}">{{p.author}}</a></h5>
+
+      <ul class="post-author-edit">
+         <li><h5 class="written-by">Written by: <a href="{%url "blog.views.profile_view" %}">{{p.author}}</a></h5></li>
+         <li><a class="btn btn-default" href="{% url "blog.views.post_edit" pk=p.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></li>
+      </ul>
 
    </article>
 

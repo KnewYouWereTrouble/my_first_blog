@@ -18,7 +18,7 @@
       <header id="header">
          <div class="header-content">
             <div class="profile-pic">
-               <img src="../../static/images/happycat.jpg" class="img-circle">
+               <img src="{% static "images/happycat.jpg" %}" class="img-circle">
             <div>
 
             <h4><strong>This blog belongs to Desmond.</strong><br/><br/>
@@ -30,13 +30,14 @@
                   <li role="presentation"><a href="{%url "blog.views.profile_view" %}">Profile</a></li>
                   <li role="presentation"><a href="{%url "blog.views.post_view" %}">Posts</a></li>
                   <li role="presentation"><a href="#">Briefcase</a></li>
+                  <li role="presentation"><a href="{% url "blog.views.post_view_new" %}"><span class="glyphicon glyphicon-plus"></span></a></li>
                </ul>
             </nav>
          </div>
       </header>
 
       <section id="main-content">
-         <script src="../../static/js/main.js"></script>
+         <script src="{% static "js/main.js" %}"></script>
          {%block content%}
          {%endblock%}
       </section>

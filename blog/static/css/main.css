@@ -96,3 +96,28 @@ section, summary, time, mark, audio, video {
 .post .written-by{
 	margin-top:3em;
 }
+
+.post-author-edit li{
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.post-form input,textarea{
+	color: #a2a2a2;
+	font-size: 12pt;
+	font-weight: 400;
+	background: #f7f7f7;
+	border-radius: 0.35em;
+	border: solid 2px transparent;
+	outline: 0;
+	padding: 0 0.75em;
+	text-decoration: none;
+	width: 100%;
+	display:block;
+	padding: 0 0.75em;
+	margin-bottom: 1em;
+}
+
+.post-form textarea:focus, input:focus{
+	border-color: #49bf9d;
+}
