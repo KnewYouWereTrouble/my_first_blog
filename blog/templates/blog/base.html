@@ -30,7 +30,9 @@
                   <li role="presentation"><a href="{%url "blog.views.profile_view" %}">Profile</a></li>
                   <li role="presentation"><a href="{%url "blog.views.post_view" %}">Posts</a></li>
                   <li role="presentation"><a href="#">Briefcase</a></li>
+                  {%	if	user.is_authenticated %}
                   <li role="presentation"><a href="{% url "blog.views.post_view_new" %}"><span class="glyphicon glyphicon-plus"></span></a></li>
+                  {% endif %}
                </ul>
             </nav>
          </div>
