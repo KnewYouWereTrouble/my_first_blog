@@ -6,7 +6,9 @@
       <h1>New post</h1><br/>
       <form method="POST" class="post-form" onsubmit="return validateForm()">{% csrf_token %}
          <div id="post-new-title"><label>Title: </label>{{form.title}}</div>
-         <div id="post-new-message"><label>Message: </label>{{form.text}}</div>
+         <div id="post-new-snippet"><label>Snippet: </label>{{form.snippet}}</div>
+         {{ form.media }}
+         <div id="post-new-content"><label>Content: </label>{{form.content}}</div>
          <button type="submit" class="save btn btn-default">Save</button>
          {% if edit %}
             <a class="btn btn-default" href="{%url "blog.views.post_delete" pk=p.pk%}"><span class="glyphicon glyphicon-trash"></span></a>
@@ -19,15 +21,15 @@
    function validateForm()
    {
       var title = document.getElementById("post-new-title").childNodes[1].value
-      var message = document.getElementById("post-new-message").childNodes[1].value
+      var snippet = document.getElementById("post-new-snippet").childNodes[1].value
       if (title == null || title == "") {
          alert("Title must be filled out");
          document.getElementById("post-new-title").childNodes[1].focus()
          return false;
       }
-      if (message == null || message == "") {
-         alert("Message must be filled out");
-         document.getElementById("post-new-message").childNodes[1].focus()
+      if (snippet == null || snippet == "") {
+         alert("snippet must be filled out");
+         document.getElementById("post-new-snippet").childNodes[1].focus()
          return false;
        }
    }

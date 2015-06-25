@@ -91,7 +91,7 @@ section, summary, time, mark, audio, video {
 	display:none;
 }
 
-/* POSTS */
+/* POSTS DISPLAY*/
 .post {
 	border-bottom: solid 2px #efefef;
 	padding-bottom: 0.5em;
@@ -124,9 +124,10 @@ section, summary, time, mark, audio, video {
 	margin-right: 1em;
 }
 
+/* POST EDITING */
 .post-form input, textarea{
 	color: #a2a2a2;
-	font-size: 12pt;
+	font-size: 10pt;
 	font-weight: 400;
 	background: #f7f7f7;
 	border-radius: 0.35em;
@@ -138,6 +139,10 @@ section, summary, time, mark, audio, video {
 	display:block;
 	padding: 0 0.75em;
 	margin-bottom: 1em;
+}
+
+#post-new-snippet textarea{
+	height: 10em;
 }
 
 .post-form textarea:focus, input:focus{

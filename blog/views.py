@@ -20,7 +20,7 @@ def profile_view(request):
 def post_view(request):
     #django queryset command can be chained
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by("-published_date")
-    posts = list(zip(posts, list(map(lambda p: p.text[:300]+" ...", posts))))
+    
 
     paginator = Paginator(posts, 3)
     page = request.GET.get('page')

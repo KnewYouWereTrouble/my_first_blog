@@ -1,11 +1,11 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-   {% for p, ps in posts %}
+   {% for p in posts %}
       <article class="post fade-in">
          <h1><a href="{%url "blog.views.post_details_view" pk=p.pk%}">{{p.title}}</a></h1>
          <h5>{{p.published_date}}</h5>
-         <p>{{ ps|linebreaks }}</p>
+         <p>{{ p.snippet|linebreaks }}</p>
          <h5 class="written-by">Written by: <a href="{%url "blog.views.profile_view" %}">{{p.author}}</a></h5>
          <span>Comments: {{ p.comments.count }}</span>
       </article>

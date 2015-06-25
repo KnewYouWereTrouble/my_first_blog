@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from blog import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 admin.autodiscover()
 
@@ -31,4 +33,5 @@ urlpatterns = [
     url(r'^posts/(?P<pk>[0-9]+)/add_comment$', views.add_comment_to_post, name="add_comment_to_posts"),
     url(r'^posts/(?P<pk>[0-9]+)/flag_comment$', views.flag_comment, name="flag_comment"),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^ckeditor/', include('ckeditor.urls')),
 ]
