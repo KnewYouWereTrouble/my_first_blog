@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
 
 # Create your views here.
@@ -18,7 +18,9 @@ def profile_view(request):
 
 
 def post_view(request):
-    posts = Post.objects.order_by('-published_date')
+    #django queryset command can be chained
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by("-published_date")
+    posts = list(zip(posts, list(map(lambda p: p.text[:400]+" ...", posts))))
 
     paginator = Paginator(posts, 3)
     page = request.GET.get('page')
@@ -47,7 +49,7 @@ def post_view_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
-            post.publish()
+            post.save()
             return redirect('blog.views.post_details_view', pk=post.pk)
     else:
         form = PostForm()
@@ -66,3 +68,25 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_new.html', {'form': form})
+
+
+def add_comment_to_post(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('blog.views.post_details_view', pk=post.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
+
+
+def flag_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    post_pk = comment.post.pk
+    comment.flag_as_inappropriate()
+    return redirect('blog.views.post_details_view', pk=post_pk)

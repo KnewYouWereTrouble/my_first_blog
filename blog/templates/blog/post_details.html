@@ -14,7 +14,28 @@
          <li><a class="btn btn-default" href="{% url "blog.views.post_edit" pk=p.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></li>
          {% endif %}
       </ul>
+   </article>
 
+   <article class="fade-in post-comments">
+      <h3>Comments :</h3>
+      {% for comment in p.comments.all %}
+            <div class="comment">
+   				<ul>
+                  <li><strong>{{ comment.author }}</strong></li>
+                  <li><h6>{{ comment.created_date }}</h6></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="{%url "blog.views.flag_comment" pk=comment.pk %}" title="Flag as inappropriate"><span class="glyphicon glyphicon-flag"></span></a></li>
+                  {% endif %}
+               </ul>
+               <div class="comment-text">{{ comment.text|linebreaks }}</div>
+   			</div><br/>
+
+         {%	empty	%}
+			<p>No	comments	here yet :(</p>
+
+      {%	endfor %}
+
+      <a	class="btn btn-default" href="{%url "blog.views.add_comment_to_post" pk=p.pk%}">Add comment</a>
    </article>
 
 {% endblock %}

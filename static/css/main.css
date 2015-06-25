@@ -95,7 +95,7 @@ section, summary, time, mark, audio, video {
 .post {
 	border-bottom: solid 2px #efefef;
 	padding-bottom: 0.5em;
-	margin-bottom : 3em;
+	margin-bottom : 4em;
 }
 
 .post h1{
@@ -116,6 +116,7 @@ section, summary, time, mark, audio, video {
 
 .post .written-by{
 	margin-top:3em;
+	margin-bottom: 0.2em;
 }
 
 .post-author-edit li{
@@ -143,4 +144,27 @@ section, summary, time, mark, audio, video {
 	border-color: #49bf9d;
 }
 
-/* POSTS *//* POSTS *//* POSTS *//* POSTS */
+/* POSTS COMMENTS */
+.post-comments {
+	margin-top: 4em;
+}
+
+.post-comments h3{
+	margin-bottom: 0.6em;
+}
+
+.comment *{
+	margin-top: 0.5em;
+}
+
+.comment ul li{
+	display: inline-block;
+	margin-right: 0.5em;
+}
+.comment .comment-text{
+	background-color: #efefef;
+}
+
+.post-comments .btn{
+	margin-top: 1em;
+}
