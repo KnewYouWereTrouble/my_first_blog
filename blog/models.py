@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from django_markdown.models import MarkdownField
 
 # Create your models here.
 class Post(models.Model):
