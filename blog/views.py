@@ -20,7 +20,7 @@ def profile_view(request):
 def post_view(request):
     #django queryset command can be chained
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by("-published_date")
-    posts = list(zip(posts, list(map(lambda p: p.text[:400]+" ...", posts))))
+    posts = list(zip(posts, list(map(lambda p: p.text[:300]+" ...", posts))))
 
     paginator = Paginator(posts, 3)
     page = request.GET.get('page')
@@ -49,11 +49,12 @@ def post_view_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
-            post.save()
+            post.publish()
             return redirect('blog.views.post_details_view', pk=post.pk)
     else:
         form = PostForm()
     return render(request, "blog/post_new.html", {"form":form})
+
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -62,12 +63,16 @@ def post_edit(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
-            post.publish()
+            post.save()
             return redirect('blog.views.post_details_view', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blog/post_new.html', {'form': form})
+    return render(request, 'blog/post_new.html', {'form': form, "p":post, "edit":True})
+
+def post_delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('blog.views.post_view')
 
 
 def add_comment_to_post(request, pk):

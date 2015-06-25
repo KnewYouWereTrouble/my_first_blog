@@ -1,12 +1,12 @@
 from django.db import models
 from django.utils import timezone
-
+from django_markdown.models import MarkdownField
 
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=255)
     author = models.ForeignKey('auth.User')
-    text = models.TextField()
+    text = models.TextField(default="")
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
 
@@ -25,6 +25,7 @@ class Comment(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved = models.BooleanField(default=False)
+
 
     def approve(self):
         self.approve = True

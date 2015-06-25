@@ -8,6 +8,9 @@
          <div id="post-new-title"><label>Title: </label>{{form.title}}</div>
          <div id="post-new-message"><label>Message: </label>{{form.text}}</div>
          <button type="submit" class="save btn btn-default">Save</button>
+         {% if edit %}
+            <a class="btn btn-default" href="{%url "blog.views.post_delete" pk=p.pk%}"><span class="glyphicon glyphicon-trash"></span></a>
+         {% endif %}
       </form>
    </article>
 
