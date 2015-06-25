@@ -4,12 +4,29 @@
 {% block content %}
    <article class="post fade-in">
       <h1>New comment</h1><br/>
-      <form method="POST" class="post-form">{% csrf_token %}
-         <label>Author: </label>{{form.author}}
-         <label>Message: </label>{{form.text}}
+      <form method="POST" class="post-form" onsubmit="return validateForm()">{% csrf_token %}
+         <div id="comment-new-author"><label>Author: </label>{{form.author}}</div>
+         <div id="comment-new-message"><label>Message: </label>{{form.text}}</div>
          <button type="submit" class="save btn btn-default">Save</button>
       </form>
    </article>
 
+<script >
+   function validateForm()
+   {
+      var title = document.getElementById("comment-new-author").childNodes[1].value
+      var message = document.getElementById("comment-new-message").childNodes[1].value
+      if (title == null || title == "") {
+         alert("Author must be filled out");
+         document.getElementById("comment-new-author").childNodes[1].focus()
+         return false;
+      }
+      if (message == null || message == "") {
+         alert("Message must be filled out");
+         document.getElementById("comment-new-message").childNodes[1].focus()
+         return false;
+       }
+   }
+</script>
 
 {% endblock %}

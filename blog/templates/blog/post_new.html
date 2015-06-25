@@ -4,11 +4,30 @@
 {% block content %}
    <article class="post fade-in">
       <h1>New post</h1><br/>
-      <form method="POST" class="post-form">{% csrf_token %}
-         <label>Title: </label>{{form.title}}
-         <label>Message: </label>{{form.text}}
+      <form method="POST" class="post-form" onsubmit="return validateForm()">{% csrf_token %}
+         <div id="post-new-title"><label>Title: </label>{{form.title}}</div>
+         <div id="post-new-message"><label>Message: </label>{{form.text}}</div>
          <button type="submit" class="save btn btn-default">Save</button>
       </form>
    </article>
+
+
+<script >
+   function validateForm()
+   {
+      var title = document.getElementById("post-new-title").childNodes[1].value
+      var message = document.getElementById("post-new-message").childNodes[1].value
+      if (title == null || title == "") {
+         alert("Title must be filled out");
+         document.getElementById("post-new-title").childNodes[1].focus()
+         return false;
+      }
+      if (message == null || message == "") {
+         alert("Message must be filled out");
+         document.getElementById("post-new-message").childNodes[1].focus()
+         return false;
+       }
+   }
+</script>
 
 {% endblock %}
